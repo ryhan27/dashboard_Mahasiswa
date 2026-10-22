@@ -1,98 +1,49 @@
 import 'package:flutter/material.dart';
 
-void main() {
-  print(Siswa.namaSekolah);
-
-  Siswa siswa1 = Siswa("Aryan");
-  siswa1.perkenalan();
-  Siswa siswa2 = Siswa("daffa");
-  siswa2.perkenalan();
-
-  Siswa.namaSekolah = "SMA Harapan Bangsa";
-  print("Setelah nama sekolah diubah");
-  siswa1.perkenalan();
-  siswa2.perkenalan();
-
-  // Menjalankan aplikasi Flutter
+void main () {
   runApp(const MyApp());
 }
-
-class MyApp extends StatelessWidget {
+class MyApp extends StatelessWidget{
   const MyApp({super.key});
-  static const hari = 'hari ini, Rabu!';
-  static const hari2 = 'besok, Kamis!';
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context){
     return MaterialApp(
-      home: Scaffold(
-        body: SizedBox.expand(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: const [
-              Text(hari, textAlign: TextAlign.center),
-              Text(hari2, textAlign: TextAlign.center),
-              SizedBox(height: 24),
-              SpacingTextWidget(),
-            ],
-          ),
-        ),
-      ),
+     title: 'Aplikasi Kampus',
+     debugShowCheckedModeBanner: false,
+     theme: ThemeData(
+      useMaterial3: true,
+      colorScheme: ColorScheme.fromSeed(seedColor: Colors.yellow),
+     ),
+     darkTheme: ThemeData.dark(useMaterial3: true),
+     home: const MyHome(),
     );
+   
   }
 }
-
-class Siswa {
-  static String namaSekolah = 'SMA Negeri 9 Kota Tangerang';
-  String namaSiswa;
-  Siswa(this.namaSiswa);
-
-  void perkenalan() {
-    print('Halo, nama saya $namaSiswa. Saya bersekolah di $namaSekolah');
-  }
-}
-
-class SpacingTextWidget extends StatelessWidget {
-  const SpacingTextWidget({super.key});
+class MyHome extends StatelessWidget {
+  const MyHome({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          'Tampilan Standar',
-          style: TextStyle(
-            fontSize: 20,
+    return Scaffold(
+        appBar: AppBar(
+          leading: const Icon(Icons.access_time_filled_rounded),
+          backgroundColor: Colors.green,
+          actions: [
+            Icon(Icons.search),
+            IconButton( onPressed: () {
+                print('Halo Bro!');
+              },
+              icon:Icon(Icons.account_circle_rounded),
+            ),
+          ],
+          title:Center(child: const Text('Dashboard Mahasiswa')),
           ),
+        body: const Center(
+          child: Text('Rayhan Ramadhansyah'),
         ),
-        SizedBox(height: 16),
-        Text(
-          'JUDUL JUDULAN',
-          style: TextStyle(
-            fontSize: 20,
-            letterSpacing: 8.0,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-        SizedBox(height: 16),
-        Text(
-          'Catatan Pengingat Tugas',
-          style: TextStyle(
-            fontSize: 20,
-            wordSpacing: 18.0,
-          ),
-        ),
-        SizedBox(height: 16),
-        Text(
-          'Poin Kesatu\nPoin Kedua\nPoin Ketiga',
-          style: TextStyle(
-            fontSize: 20,
-            height: 1.5,
-          ),
-        ),
-      ],
-    );
+      );
+    
   }
 }
