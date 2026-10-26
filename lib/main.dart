@@ -43,7 +43,7 @@ class ProfilePage extends StatelessWidget {
         ],
         // Latihan 3: Ubah judul AppBar menjadi 'Dashboard Mahasiswa'
         title: const Text('Dashboard Mahasiswa'),
-        backgroundColor: Colors.cyan,
+        backgroundColor: Colors.grey,
         foregroundColor: Colors.white,
       ),
       body: const Center(
